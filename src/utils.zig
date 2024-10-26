@@ -48,7 +48,138 @@ pub fn createDay(day: enumerations.DayEnum, allocator: std.mem.Allocator) !*Inte
             interface.* = day03.create();
             return interface;
         },
-        else => return error.UnsupportedDay,
+        .D04 => {
+            var day04 = try allocator.create(d4.Day04);
+            const interface = try allocator.create(Interface.IDay);
+            interface.* = day04.create();
+            return interface;
+        },
+        .D05 => {
+            var day05 = try allocator.create(d5.Day05);
+            const interface = try allocator.create(Interface.IDay);
+            interface.* = day05.create();
+            return interface;
+        },
+        .D06 => {
+            var day06 = try allocator.create(d6.Day06);
+            const interface = try allocator.create(Interface.IDay);
+            interface.* = day06.create();
+            return interface;
+        },
+        .D07 => {
+            var day07 = try allocator.create(d7.Day07);
+            const interface = try allocator.create(Interface.IDay);
+            interface.* = day07.create();
+            return interface;
+        },
+        .D08 => {
+            var day08 = try allocator.create(d8.Day08);
+            const interface = try allocator.create(Interface.IDay);
+            interface.* = day08.create();
+            return interface;
+        },
+        .D09 => {
+            var day09 = try allocator.create(d9.Day09);
+            const interface = try allocator.create(Interface.IDay);
+            interface.* = day09.create();
+            return interface;
+        },
+        .D10 => {
+            var day10 = try allocator.create(d10.Day10);
+            const interface = try allocator.create(Interface.IDay);
+            interface.* = day10.create();
+            return interface;
+        },
+        .D11 => {
+            var day11 = try allocator.create(d11.Day11);
+            const interface = try allocator.create(Interface.IDay);
+            interface.* = day11.create();
+            return interface;
+        },
+        .D12 => {
+            var day12 = try allocator.create(d12.Day12);
+            const interface = try allocator.create(Interface.IDay);
+            interface.* = day12.create();
+            return interface;
+        },
+        .D13 => {
+            var day13 = try allocator.create(d13.Day13);
+            const interface = try allocator.create(Interface.IDay);
+            interface.* = day13.create();
+            return interface;
+        },
+        .D14 => {
+            var day14 = try allocator.create(d14.Day14);
+            const interface = try allocator.create(Interface.IDay);
+            interface.* = day14.create();
+            return interface;
+        },
+        .D15 => {
+            var day15 = try allocator.create(d15.Day15);
+            const interface = try allocator.create(Interface.IDay);
+            interface.* = day15.create();
+            return interface;
+        },
+        .D16 => {
+            var day16 = try allocator.create(d16.Day16);
+            const interface = try allocator.create(Interface.IDay);
+            interface.* = day16.create();
+            return interface;
+        },
+        .D17 => {
+            var day17 = try allocator.create(d17.Day17);
+            const interface = try allocator.create(Interface.IDay);
+            interface.* = day17.create();
+            return interface;
+        },
+        .D18 => {
+            var day18 = try allocator.create(d18.Day18);
+            const interface = try allocator.create(Interface.IDay);
+            interface.* = day18.create();
+            return interface;
+        },
+        .D19 => {
+            var day19 = try allocator.create(d19.Day19);
+            const interface = try allocator.create(Interface.IDay);
+            interface.* = day19.create();
+            return interface;
+        },
+        .D20 => {
+            var day20 = try allocator.create(d20.Day20);
+            const interface = try allocator.create(Interface.IDay);
+            interface.* = day20.create();
+            return interface;
+        },
+        .D21 => {
+            var day21 = try allocator.create(d21.Day21);
+            const interface = try allocator.create(Interface.IDay);
+            interface.* = day21.create();
+            return interface;
+        },
+        .D22 => {
+            var day22 = try allocator.create(d22.Day22);
+            const interface = try allocator.create(Interface.IDay);
+            interface.* = day22.create();
+            return interface;
+        },
+        .D23 => {
+            var day23 = try allocator.create(d23.Day23);
+            const interface = try allocator.create(Interface.IDay);
+            interface.* = day23.create();
+            return interface;
+        },
+        .D24 => {
+            var day24 = try allocator.create(d24.Day24);
+            const interface = try allocator.create(Interface.IDay);
+            interface.* = day24.create();
+            return interface;
+        },
+        .D25 => {
+            var day25 = try allocator.create(d25.Day25);
+            const interface = try allocator.create(Interface.IDay);
+            interface.* = day25.create();
+            return interface;
+        },
     }
 }
 
