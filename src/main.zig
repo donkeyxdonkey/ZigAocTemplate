@@ -58,8 +58,8 @@ pub fn main() !void {
     print("Current Day: {d} Mode: {s}\n", .{ day_number, @tagName(mode) });
     printLine();
 
-    selected_day.res1 = @constCast(selected_day.part1(&input, enable_print));
-    selected_day.res2 = @constCast(selected_day.part2(&input, enable_print));
+    selected_day.res1 = @constCast(try selected_day.part1(&input, enable_print));
+    selected_day.res2 = @constCast(try selected_day.part2(&input, enable_print));
     selected_day.printResults();
 
     print("\nSet Status?: [C]omplete, [S]kip: ", .{});
