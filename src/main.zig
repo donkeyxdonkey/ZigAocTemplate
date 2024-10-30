@@ -10,7 +10,8 @@ const OpenMode = std.fs.File.OpenMode;
 const Args = struct {
     result: i8 = 0, // 0:1+2, 1:1, 2:2
     day: i8 = 1, // 1-25 if 1 next day where 0 or 25 if all
-    mode: i8 = 0, // Test:0(run test input), Real:1(run real input*), Complete:1(&), Skip:2(&)
+    mode: i8 = 0, // Test:0(run test input), Real:1(run real input)
+    status: bool = false,
     debug_print: bool = false,
 };
 
@@ -28,6 +29,12 @@ pub fn main() !void {
 
     var parsedArgs: Args = Args{};
     try argsparser.ParseArgs(@TypeOf(parsedArgs), args[1..], &parsedArgs);
+
+    if (parsedArgs.status) {
+        clearScreen();
+        try printStatus();
+        return;
+    }
 
     var day_number: i8 = parsedArgs.day;
     if (day_number == 1) {
@@ -91,6 +98,18 @@ fn getProgressDay() i8 {
     }
 
     return 1;
+}
+
+fn printStatus() !void {
+    for (progress, 0..) |char, index| {
+        const status = try std.meta.intToEnum(enumerations.Status, char);
+
+        if (index < 9) {
+            print("Day  {d}: {s}\n", .{ index + 1, @tagName(status) });
+        } else {
+            print("Day {d}: {s}\n", .{ index + 1, @tagName(status) });
+        }
+    }
 }
 
 fn clearScreen() void {

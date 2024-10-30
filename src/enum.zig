@@ -42,3 +42,9 @@ pub const ProgressEnum = enum(i8) {
         return std.meta.intToEnum(ProgressEnum, value);
     }
 };
+
+pub const Status = enum(u8) {
+    NotComplete = '0',
+    Finished = '1',
+    Skipped = '2',
+};
