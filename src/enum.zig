@@ -48,3 +48,12 @@ pub const Status = enum(u8) {
     Finished = '1',
     Skipped = '2',
 };
+
+pub const TestInput = enum(bool) {
+    Test = true,
+    Real = false,
+
+    pub fn fromBool(value: bool) TestInput {
+        return if (value) TestInput.Test else TestInput.Real;
+    }
+};

@@ -183,154 +183,154 @@ pub fn createDay(day: enumerations.DayEnum, allocator: std.mem.Allocator) !*Inte
     }
 }
 
-pub fn getInput(day: enumerations.DayEnum, mode: enumerations.ProgressEnum) ![]const u8 {
+pub fn getInput(day: enumerations.DayEnum, testInput: bool) ![]const u8 {
     return switch (day) {
         .D01 => {
-            return if (mode == enumerations.ProgressEnum.Test)
+            return if (testInput)
                 @embedFile("input/day01test.txt")
             else
                 @embedFile("input/day01.txt");
         },
         .D02 => {
-            return if (mode == enumerations.ProgressEnum.Test)
+            return if (testInput)
                 @embedFile("input/day02test.txt")
             else
                 @embedFile("input/day02.txt");
         },
         .D03 => {
-            return if (mode == enumerations.ProgressEnum.Test)
+            return if (testInput)
                 @embedFile("input/day03test.txt")
             else
                 @embedFile("input/day03.txt");
         },
         .D04 => {
-            return if (mode == enumerations.ProgressEnum.Test)
+            return if (testInput)
                 @embedFile("input/day04test.txt")
             else
                 @embedFile("input/day04.txt");
         },
         .D05 => {
-            return if (mode == enumerations.ProgressEnum.Test)
+            return if (testInput)
                 @embedFile("input/day05test.txt")
             else
                 @embedFile("input/day05.txt");
         },
         .D06 => {
-            return if (mode == enumerations.ProgressEnum.Test)
+            return if (testInput)
                 @embedFile("input/day06test.txt")
             else
                 @embedFile("input/day06.txt");
         },
         .D07 => {
-            return if (mode == enumerations.ProgressEnum.Test)
+            return if (testInput)
                 @embedFile("input/day07test.txt")
             else
                 @embedFile("input/day07.txt");
         },
         .D08 => {
-            return if (mode == enumerations.ProgressEnum.Test)
+            return if (testInput)
                 @embedFile("input/day08test.txt")
             else
                 @embedFile("input/day08.txt");
         },
         .D09 => {
-            return if (mode == enumerations.ProgressEnum.Test)
+            return if (testInput)
                 @embedFile("input/day09test.txt")
             else
                 @embedFile("input/day09.txt");
         },
         .D10 => {
-            return if (mode == enumerations.ProgressEnum.Test)
+            return if (testInput)
                 @embedFile("input/day10test.txt")
             else
                 @embedFile("input/day10.txt");
         },
         .D11 => {
-            return if (mode == enumerations.ProgressEnum.Test)
+            return if (testInput)
                 @embedFile("input/day11test.txt")
             else
                 @embedFile("input/day11.txt");
         },
         .D12 => {
-            return if (mode == enumerations.ProgressEnum.Test)
+            return if (testInput)
                 @embedFile("input/day12test.txt")
             else
                 @embedFile("input/day12.txt");
         },
         .D13 => {
-            return if (mode == enumerations.ProgressEnum.Test)
+            return if (testInput)
                 @embedFile("input/day13test.txt")
             else
                 @embedFile("input/day13.txt");
         },
         .D14 => {
-            return if (mode == enumerations.ProgressEnum.Test)
+            return if (testInput)
                 @embedFile("input/day14test.txt")
             else
                 @embedFile("input/day14.txt");
         },
         .D15 => {
-            return if (mode == enumerations.ProgressEnum.Test)
+            return if (testInput)
                 @embedFile("input/day15test.txt")
             else
                 @embedFile("input/day15.txt");
         },
         .D16 => {
-            return if (mode == enumerations.ProgressEnum.Test)
+            return if (testInput)
                 @embedFile("input/day16test.txt")
             else
                 @embedFile("input/day16.txt");
         },
         .D17 => {
-            return if (mode == enumerations.ProgressEnum.Test)
+            return if (testInput)
                 @embedFile("input/day17test.txt")
             else
                 @embedFile("input/day17.txt");
         },
         .D18 => {
-            return if (mode == enumerations.ProgressEnum.Test)
+            return if (testInput)
                 @embedFile("input/day18test.txt")
             else
                 @embedFile("input/day18.txt");
         },
         .D19 => {
-            return if (mode == enumerations.ProgressEnum.Test)
+            return if (testInput)
                 @embedFile("input/day19test.txt")
             else
                 @embedFile("input/day19.txt");
         },
         .D20 => {
-            return if (mode == enumerations.ProgressEnum.Test)
+            return if (testInput)
                 @embedFile("input/day20test.txt")
             else
                 @embedFile("input/day20.txt");
         },
         .D21 => {
-            return if (mode == enumerations.ProgressEnum.Test)
+            return if (testInput)
                 @embedFile("input/day21test.txt")
             else
                 @embedFile("input/day21.txt");
         },
         .D22 => {
-            return if (mode == enumerations.ProgressEnum.Test)
+            return if (testInput)
                 @embedFile("input/day22test.txt")
             else
                 @embedFile("input/day22.txt");
         },
         .D23 => {
-            return if (mode == enumerations.ProgressEnum.Test)
+            return if (testInput)
                 @embedFile("input/day23test.txt")
             else
                 @embedFile("input/day23.txt");
         },
         .D24 => {
-            return if (mode == enumerations.ProgressEnum.Test)
+            return if (testInput)
                 @embedFile("input/day24test.txt")
             else
                 @embedFile("input/day24.txt");
         },
         .D25 => {
-            return if (mode == enumerations.ProgressEnum.Test)
+            return if (testInput)
                 @embedFile("input/day25test.txt")
             else
                 @embedFile("input/day25.txt");

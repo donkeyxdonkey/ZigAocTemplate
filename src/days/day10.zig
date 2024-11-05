@@ -4,30 +4,35 @@ const std = @import("std");
 const print = std.debug.print;
 
 pub const Day10 = struct {
-    pub fn part1(self: *Day10, input: *const []const u8, debug_print: bool) ![]const u8 {
+    pub fn part1(self: *Day10, input: *const []const u8, debug_print: bool) !void {
         _ = &self;
         _ = &input;
-        _ = &debug_print;
 
-        return "Day10 part1";
+        if (debug_print)
+            print("{s}\n", .{input.*});
+
+        print("Part 1: \n", .{});
     }
 
-    pub fn part2(self: *Day10, input: *const []const u8, debug_print: bool) ![]const u8 {
+    pub fn part2(self: *Day10, input: *const []const u8, debug_print: bool) !void {
         _ = &self;
         _ = &input;
         _ = &debug_print;
 
-        return "Day10 part2";
+        if (debug_print)
+            print("{s}\n", .{input.*});
+
+        print("Part 2: \n", .{});
     }
 
     const vtable = i.IDay.VTable{
         .part1 = (struct {
-            fn f(ptr: *anyopaque, input: *const []const u8, debug_print: bool) ![]const u8 {
+            fn f(ptr: *anyopaque, input: *const []const u8, debug_print: bool) !void {
                 return @as(*Day10, @ptrCast(@alignCast(ptr))).part1(input, debug_print);
             }
         }).f,
         .part2 = (struct {
-            fn f(ptr: *anyopaque, input: *const []const u8, debug_print: bool) ![]const u8 {
+            fn f(ptr: *anyopaque, input: *const []const u8, debug_print: bool) !void {
                 return @as(*Day10, @ptrCast(@alignCast(ptr))).part2(input, debug_print);
             }
         }).f,

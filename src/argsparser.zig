@@ -46,7 +46,7 @@ pub fn ParseArgs(comptime T: type, args: [][]u8, parsed: *T) !void {
                     },
                     i16 => {
                         if (i + 1 != args.len) {
-                            const parsedInt = std.fmt.parseInt(i16, args[i + 1], 0) catch -1;
+                            const parsedInt = std.fmt.parseInt(i16, args[i + 1], 10) catch -1;
                             @field(parsed.*, field.name) = parsedInt;
                             skip = true;
                         } else {
@@ -56,7 +56,7 @@ pub fn ParseArgs(comptime T: type, args: [][]u8, parsed: *T) !void {
                     },
                     i32 => {
                         if (i + 1 != args.len) {
-                            const parsedInt = std.fmt.parseInt(i32, args[i + 1], 0) catch -1;
+                            const parsedInt = std.fmt.parseInt(i32, args[i + 1], 10) catch -1;
                             @field(parsed.*, field.name) = parsedInt;
                             skip = true;
                         } else {
@@ -66,7 +66,7 @@ pub fn ParseArgs(comptime T: type, args: [][]u8, parsed: *T) !void {
                     },
                     i64 => {
                         if (i + 1 != args.len) {
-                            const parsedInt = std.fmt.parseInt(i64, args[i + 1], 0) catch -1;
+                            const parsedInt = std.fmt.parseInt(i64, args[i + 1], 10) catch -1;
                             @field(parsed.*, field.name) = parsedInt;
                             skip = true;
                         } else {
@@ -76,7 +76,7 @@ pub fn ParseArgs(comptime T: type, args: [][]u8, parsed: *T) !void {
                     },
                     i128 => {
                         if (i + 1 != args.len) {
-                            const parsedInt = std.fmt.parseInt(i128, args[i + 1], 0) catch -1;
+                            const parsedInt = std.fmt.parseInt(i128, args[i + 1], 10) catch -1;
                             @field(parsed.*, field.name) = parsedInt;
                             skip = true;
                         } else {
@@ -86,7 +86,7 @@ pub fn ParseArgs(comptime T: type, args: [][]u8, parsed: *T) !void {
                     },
                     u8 => {
                         if (i + 1 != args.len) {
-                            const parsedUInt = std.fmt.parseUnsigned(u8, args[i + 1], 0) catch 0;
+                            const parsedUInt = std.fmt.parseUnsigned(u8, args[i + 1], 10) catch 0;
                             @field(parsed.*, field.name) = parsedUInt;
                             skip = true;
                         } else {
@@ -96,7 +96,7 @@ pub fn ParseArgs(comptime T: type, args: [][]u8, parsed: *T) !void {
                     },
                     u16 => {
                         if (i + 1 != args.len) {
-                            const parsedUInt = std.fmt.parseUnsigned(u16, args[i + 1], 0) catch 0;
+                            const parsedUInt = std.fmt.parseUnsigned(u16, args[i + 1], 10) catch 0;
                             @field(parsed.*, field.name) = parsedUInt;
                             skip = true;
                         } else {
@@ -106,7 +106,7 @@ pub fn ParseArgs(comptime T: type, args: [][]u8, parsed: *T) !void {
                     },
                     u32 => {
                         if (i + 1 != args.len) {
-                            const parsedUInt = std.fmt.parseUnsigned(u32, args[i + 1], 0) catch 0;
+                            const parsedUInt = std.fmt.parseUnsigned(u32, args[i + 1], 10) catch 0;
                             @field(parsed.*, field.name) = parsedUInt;
                             skip = true;
                         } else {
@@ -116,7 +116,7 @@ pub fn ParseArgs(comptime T: type, args: [][]u8, parsed: *T) !void {
                     },
                     u64 => {
                         if (i + 1 != args.len) {
-                            const parsedUInt = std.fmt.parseUnsigned(u64, args[i + 1], 0) catch 0;
+                            const parsedUInt = std.fmt.parseUnsigned(u64, args[i + 1], 10) catch 0;
                             @field(parsed.*, field.name) = parsedUInt;
                             skip = true;
                         } else {
@@ -126,7 +126,7 @@ pub fn ParseArgs(comptime T: type, args: [][]u8, parsed: *T) !void {
                     },
                     u128 => {
                         if (i + 1 != args.len) {
-                            const parsedUInt = std.fmt.parseUnsigned(u128, args[i + 1], 0) catch 0;
+                            const parsedUInt = std.fmt.parseUnsigned(u128, args[i + 1], 10) catch 0;
                             @field(parsed.*, field.name) = parsedUInt;
                             skip = true;
                         } else {

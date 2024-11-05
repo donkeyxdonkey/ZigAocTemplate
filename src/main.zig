@@ -1,4 +1,3 @@
-// ---------------------------------------------------------------------------------------
 const std = @import("std");
 const enumerations = @import("enum.zig");
 const utils = @import("utils.zig");
@@ -6,13 +5,15 @@ const print = std.debug.print;
 const argsparser = @import("argsparser.zig");
 const OpenFlags = std.fs.File.OpenFlags;
 const OpenMode = std.fs.File.OpenMode;
-// ---------------------------------------------------------------------------------------
+
 const Args = struct {
-    result: i8 = 0, // 0:1+2, 1:1, 2:2
-    day: i8 = 1, // 1-25 if 1 next day where 0 or 25 if all
-    mode: i8 = 0, // Test:0(run test input), Real:1(run real input)
+    day: i8 = 0, // 1-25 if 0 = auto
     status: bool = false,
     debug_print: bool = false,
+    test_input: bool = false,
+    set_status: bool = false,
+    part1: bool = false,
+    part2: bool = false,
 };
 
 const progress = @embedFile("progress.txt");
@@ -37,51 +38,53 @@ pub fn main() !void {
     }
 
     var day_number: i8 = parsedArgs.day;
-    if (day_number == 1) {
+
+    if (parsedArgs.day == 0) {
         day_number = getProgressDay();
     }
 
-    var x: [5]u8 = undefined;
-    const stdin = std.io.getStdIn().reader();
-
-    print("Day {d} Select input [0]default test - [1] Real: ", .{day_number});
-    _ = try stdin.readUntilDelimiter(&x, '\n');
     clearScreen();
 
-    const index: i8 = if (x[0] == '1') 1 else 0;
-
     const enable_print: bool = parsedArgs.debug_print;
-
     const i: usize = @as(usize, @intCast(day_number)) - 1;
-    // const index = @as(i8, @intCast(progress[i])) - '0';
 
     const day = try enumerations.DayEnum.fromInt(day_number);
-    const mode = try enumerations.ProgressEnum.fromInt(index);
     var selected_day = try utils.createDay(day, allocator);
     defer allocator.destroy(selected_day);
 
-    const input = try utils.getInput(day, mode);
+    const input = try utils.getInput(day, parsedArgs.test_input);
     printLine();
-    print("Current Day: {d} Mode: {s}\n", .{ day_number, @tagName(mode) });
+    const index: i8 = if (parsedArgs.test_input == true) 0 else 1;
+    const mode = try enumerations.ProgressEnum.fromInt(index);
+    print("Current Day: {d}\nInput: {s}\n", .{ day_number, @tagName(mode) });
     printLine();
 
-    selected_day.res1 = @constCast(try selected_day.part1(&input, enable_print));
-    selected_day.res2 = @constCast(try selected_day.part2(&input, enable_print));
-    selected_day.printResults();
+    const both: bool = (!parsedArgs.part1 and !parsedArgs.part2);
 
-    print("\nSet Status?: [C]omplete, [S]kip: ", .{});
-    _ = try stdin.readUntilDelimiter(&x, '\n');
+    if (both or parsedArgs.part1) {
+        try selected_day.part1(&input, enable_print);
+    }
 
-    if (x[0] == 'C' or x[0] == 'c' or x[0] == 'S' or x[0] == 's') {
-        var new_progress = try allocator.alloc(u8, progress.len);
-        defer allocator.free(new_progress);
-        std.mem.copyForwards(u8, new_progress, progress);
-        new_progress[i] = if (x[0] == 'C' or x[0] == 'c') '1' else '2';
+    if (both or parsedArgs.part2) {
+        try selected_day.part2(&input, enable_print);
+    }
 
-        // eftersom cwd är ../
-        const file = try std.fs.cwd().openFile("src/progress.txt", OpenFlags{ .mode = OpenMode.write_only });
-        defer file.close();
-        _ = try file.write(@constCast(new_progress));
+    if (parsedArgs.set_status) {
+        var x: [5]u8 = undefined;
+        const stdin = std.io.getStdIn().reader();
+        print("\n[C]omplete, [S]kip: ", .{});
+        _ = try stdin.readUntilDelimiter(&x, '\n');
+        if (x[0] == 'C' or x[0] == 'c' or x[0] == 'S' or x[0] == 's') {
+            var new_progress = try allocator.alloc(u8, progress.len);
+            defer allocator.free(new_progress);
+            std.mem.copyForwards(u8, new_progress, progress);
+            new_progress[i] = if (x[0] == 'C' or x[0] == 'c') '1' else '2';
+
+            // eftersom cwd är ../
+            const file = try std.fs.cwd().openFile("src/progress.txt", OpenFlags{ .mode = OpenMode.write_only });
+            defer file.close();
+            _ = try file.write(@constCast(new_progress));
+        }
     }
 }
 
@@ -115,6 +118,3 @@ fn printStatus() !void {
 fn clearScreen() void {
     print("\x1B[2J\x1B[H", .{});
 }
-
-// const path = try std.fs.cwd().realpathAlloc(allocator, ".");
-// print("Current directory: {s}\n", .{path});
