@@ -1,24 +1,36 @@
 # Zig Aoc Template
-just write solution code any way like you to implement it in fn part1 fn part2. return result as []const u8.
-
-
-# HowTo:
-run - select select input - update status
-
-# Args:
-  zig build run -- ARGS here
+  Input goes into src/days/dayxx.txt
   
-  day: select day - if not provided first day with status 0 is selected else 1
-  
-  status: prints status
-  
-  debug_print: enable debug printing in result functions
-  
+  Then implement part1 and part2 in /src/day.
 
+  Run and provide args as needed
+
+```zig
+  const Args = struct {
+      day: i8 = 0, // 1-25 if 0 = auto
+      status: bool = false,
+      debug_print: bool = false,
+      test_input: bool = false,
+      set_status: bool = false,
+      part1: bool = false,
+      part2: bool = false,
+  };
+  ```
 
 # Example use:
-  zig build run -- --day 69 --debug_print
-  zig build run -- --status
+```
+  zig build run -- --day 69 --debug_print --set_status --test_input --part2
 
-# TODO:
-  add arg to run only part 1 or part 2
+  zig build run -- --part2 --test_input
+
+  zig build run -- --day 13 --part1 --set_status
+  
+  zig build run -- --status
+```
+
+# Tips:
+```
+ --set_status for automagic handling of days
+
+ --status to display current progress
+```
