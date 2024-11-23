@@ -1,4 +1,4 @@
-const i = @import("../interface/IDay.zig");
+const interface = @import("../interface/IDay.zig");
 const enumerations = @import("../enum.zig");
 const std = @import("std");
 const print = std.debug.print;
@@ -25,7 +25,7 @@ pub const Day24 = struct {
         print("Part 2: \n", .{});
     }
 
-    const vtable = i.IDay.VTable{
+    const vtable = interface.IDay.VTable{
         .part1 = (struct {
             fn f(ptr: *anyopaque, input: *const []const u8, debug_print: bool) !void {
                 return @as(*Day24, @ptrCast(@alignCast(ptr))).part1(input, debug_print);
@@ -38,7 +38,7 @@ pub const Day24 = struct {
         }).f,
     };
 
-    pub fn create(self: *Day24) i.IDay {
+    pub fn create(self: *Day24) interface.IDay {
         return .{
             .ptr = self,
             .vtable = &vtable,
