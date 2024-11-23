@@ -1,4 +1,4 @@
-# Zig Aoc Template
+# Zig Aoc Template (Windows)
   Input goes into src/days/dayxx.txt
   
   Then implement part1 and part2 in /src/day.
