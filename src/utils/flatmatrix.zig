@@ -66,12 +66,12 @@ pub fn FlatMatrix(comptime T: type) type {
                     }
                 },
                 .diagonal => {
-                    outer: for (offsets) |dir| {
+                    outer: for (offsets) |offset| {
                         var step: isize = 1;
 
                         while (true) {
-                            const nx = @as(isize, @intCast(x)) + (dir[0] * step);
-                            const ny = @as(isize, @intCast(y)) + (dir[1] * step);
+                            const nx = @as(isize, @intCast(x)) + (offset[0] * step);
+                            const ny = @as(isize, @intCast(y)) + (offset[1] * step);
 
                             if (nx < 0 or nx >= @as(isize, @intCast(self.width)) or
                                 ny < 0 or ny >= @as(isize, @intCast(self.height)))
